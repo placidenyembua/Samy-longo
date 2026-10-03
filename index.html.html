@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Longo Kankonde Samy - Professional Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0284c7',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                            accent: '#f59e0b'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts Inter & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Glassmorphism Navigation Bar */
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .light .glass-nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        .light ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0284c7;
+            border-radius: 4px;
+        }
+
+        /* Custom Hover Cards Gradient Glow */
+        .glow-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glow-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -10px rgba(2, 132, 199, 0.3);
+        }
+
+        /* Timeline Dot Effect */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 6px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: #0284c7;
+            border: 3px solid #0f172a;
+        }
+        .light .timeline-item::before {
+            border: 3px solid #ffffff;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 transition-colors duration-300 min-h-screen flex flex-col">
+
+    <!-- HEADER & NAVIGATION -->
+    <header class="sticky top-0 z-50 glass-nav border-b border-slate-800 dark:border-slate-800 light:border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo / Brand Title -->
+                <a href="#hero" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-sky-500/30 group-hover:scale-105 transition-transform">
+                        L
+                    </div>
+                    <div>
+                        <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-sky-400 to-indigo-400 bg-clip-text text-transparent">
+                            Longo K. Samy
+                        </span>
+                        <span class="block text-xs text-slate-400 dark:text-slate-400 font-medium">Digital Leader & Interpreter</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold">
+                    <a href="#about" class="text-slate-300 hover:text-sky-400 transition-colors">About</a>
+                    <a href="#experience" class="text-slate-300 hover:text-sky-400 transition-colors">Experience</a>
+                    <a href="#education" class="text-slate-300 hover:text-sky-400 transition-colors">Education</a>
+                    <a href="#projects" class="text-slate-300 hover:text-sky-400 transition-colors">Projects</a>
+                    <a href="#skills" class="text-slate-300 hover:text-sky-400 transition-colors">Skills</a>
+                    <a href="#contact" class="text-slate-300 hover:text-sky-400 transition-colors">Contact</a>
+                </nav>
+
+                <!-- Controls & Action Button -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <!-- Dark/Light Mode Toggle -->
+                    <button id="themeToggleBtn" onclick="toggleTheme()" class="p-2.5 rounded-xl bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition-all border border-slate-700" title="Toggle Theme">
+                        <i id="themeIcon" class="fas fa-sun text-amber-400"></i>
+                    </button>
+                    <a href="#contact" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-sky-600 hover:bg-sky-500 transition-all shadow-md shadow-sky-600/30 hover:shadow-sky-500/50">
+                        Hire Me
+                    </a>
+                </div>
+
+                <!-- Mobile Hamburger Menu Button -->
+                <div class="md:hidden flex items-center space-x-3">
+                    <button id="themeToggleBtnMobile" onclick="toggleTheme()" class="p-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white">
+                        <i id="themeIconMobile" class="fas fa-sun text-amber-400"></i>
+                    </button>
+                    <button onclick="toggleMobileMenu()" class="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 focus:outline-none">
+                        <i class="fas fa-bars text-2xl" id="menuIcon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-slate-900/95 border-b border-slate-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-sky-400 font-medium">About Me</a>
+            <a href="#experience" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-sky-400 font-medium">Experience</a>
+            <a href="#education" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-sky-400 font-medium">Education</a>
+            <a href="#projects" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-sky-400 font-medium">Projects</a>
+            <a href="#skills" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-sky-400 font-medium">Skills</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-sky-400 font-medium">Contact</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block text-center py-2.5 rounded-xl font-semibold text-white bg-sky-600">Get in Touch</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- HERO SECTION -->
+        <section id="hero" class="relative py-20 lg:py-28 overflow-hidden bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950">
+            <!-- Background Glow Effects -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute top-1/3 right-10 w-[300px] h-[300px] bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Hero Text Content -->
+                    <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-sm font-semibold">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            <span>Available for Remote & On-Site Projects</span>
+                        </div>
+
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
+                            Hi, I'm <span class="bg-gradient-to-r from-sky-400 via-indigo-400 to-blue-500 bg-clip-text text-transparent">Longo K. Samy</span>
+                        </h1>
+
+                        <p class="text-lg sm:text-xl text-slate-300 leading-relaxed font-normal">
+                            Digital Marketing Team Leader, Freelance Interpreter & Language Educator, and Data Management Specialist based in Nairobi, Kenya.
+                        </p>
+
+                        <p class="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto lg:mx-0">
+                            Empowering organizations through strategic multi-channel marketing, accurate data indexing, multilingual bridge-building (English, French, Lingala, Tshiluba, Swahili), and effective team leadership.
+                        </p>
+
+                        <!-- CTA Action Buttons -->
+                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+                            <a href="#experience" class="px-6 py-3.5 rounded-xl font-bold text-white bg-sky-600 hover:bg-sky-500 transition-all shadow-lg shadow-sky-600/30 flex items-center space-x-2">
+                                <span>View Experience</span>
+                                <i class="fas fa-arrow-right text-xs"></i>
+                            </a>
+                            <a href="#contact" class="px-6 py-3.5 rounded-xl font-bold text-slate-200 bg-slate-800 hover:bg-slate-700 transition-all border border-slate-700 flex items-center space-x-2">
+                                <i class="fas fa-envelope text-sky-400"></i>
+                                <span>Contact Me</span>
+                            </a>
+                            <button onclick="downloadResumeAlert()" class="px-6 py-3.5 rounded-xl font-bold text-slate-200 bg-slate-800/80 hover:bg-slate-700 transition-all border border-slate-700 flex items-center space-x-2">
+                                <i class="fas fa-file-arrow-down text-emerald-400"></i>
+                                <span>Resume CV</span>
+                            </button>
+                        </div>
+
+                        <!-- Quick Highlights Badges -->
+                        <div class="pt-8 grid grid-cols-3 gap-4 border-t border-slate-800/80 max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
+                            <div>
+                                <span class="block text-2xl font-black text-sky-400">5+</span>
+                                <span class="text-xs text-slate-400 font-medium">Languages Spoken</span>
+                            </div>
+                            <div>
+                                <span class="block text-2xl font-black text-indigo-400">4+ Yrs</span>
+                                <span class="text-xs text-slate-400 font-medium">Professional Experience</span>
+                            </div>
+                            <div>
+                                <span class="block text-2xl font-black text-emerald-400">100%</span>
+                                <span class="text-xs text-slate-400 font-medium">Data & Confidential Integrity</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Hero Interactive Profile Card -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative w-full max-w-md bg-slate-800/80 backdrop-blur-md rounded-3xl p-6 border border-slate-700 shadow-2xl space-y-6 glow-card">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-3xl font-black text-white shadow-lg">
+                                    LS
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">Longo K. Samy</h3>
+                                    <p class="text-sm text-sky-400 font-medium">Nairobi, Kenya</p>
+                                    <div class="flex items-center space-x-1 mt-1 text-xs text-slate-400">
+                                        <i class="fas fa-envelope text-slate-500"></i>
+                                        <span>longosamy12@gmail.com</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3 pt-2 border-t border-slate-700/60">
+                                <div class="flex justify-between items-center text-sm">
+                                    <span class="text-slate-400">Current Leadership</span>
+                                    <span class="font-semibold text-slate-200">Pearl 27 (Remote)</span>
+                                </div>
+                                <div class="flex justify-between items-center text-sm">
+                                    <span class="text-slate-400">Degree Pursuit</span>
+                                    <span class="font-semibold text-slate-200">BYU-Idaho (Applied Business)</span>
+                                </div>
+                                <div class="flex justify-between items-center text-sm">
+                                    <span class="text-slate-400">Phone Contact</span>
+                                    <span class="font-semibold text-sky-400">+254 727 302 728</span>
+                                </div>
+                            </div>
+
+                            <div class="pt-2">
+                                <a href="https://www.linkedin.com/in/samy-longo-920409300/" target="_blank" class="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold flex items-center justify-center space-x-2 transition-colors">
+                                    <i class="fab fa-linkedin"></i>
+                                    <span>Connect on LinkedIn</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT ME SECTION -->
+        <section id="about" class="py-20 bg-slate-950 border-t border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <span class="text-xs font-bold uppercase tracking-widest text-sky-400">About Me</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Versatile Leader & Multilingual Specialist</h2>
+                    <p class="text-slate-400">Combining business acumen, technical precision, and communication mastery across global remote setups.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Feature Card 1 -->
+                    <div class="bg-slate-900 p-8 rounded-2xl border border-slate-800 glow-card space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center text-xl font-bold">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Digital Marketing Leader</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Experienced in supervising content teams, delegating social media tasks across Reddit, Facebook, Instagram, X, and Quora while scaling brand engagement and conversions.
+                        </p>
+                    </div>
+
+                    <!-- Feature Card 2 -->
+                    <div class="bg-slate-900 p-8 rounded-2xl border border-slate-800 glow-card space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl font-bold">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Multilingual Interpreter</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Fluent in English, French, Lingala, and Tshiluba. Facilitating effective virtual interpretation in healthcare, medical, childcare, and customer support settings with strict confidentiality.
+                        </p>
+                    </div>
+
+                    <!-- Feature Card 3 -->
+                    <div class="bg-slate-900 p-8 rounded-2xl border border-slate-800 glow-card space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl font-bold">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Data & Records Specialist</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            High-precision historical record indexer and data specialist for FamilySearch projects. Detailed background in bookkeeping, Excel financial reporting, and network monitoring.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WORK EXPERIENCE SECTION -->
+        <section id="experience" class="py-20 bg-slate-900">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <span class="text-xs font-bold uppercase tracking-widest text-sky-400">Career History</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Professional Experience</h2>
+                    <p class="text-slate-400">A timeline of leadership roles, data operations, and educational instruction.</p>
+                </div>
+
+                <!-- Timeline Container -->
+                <div class="relative border-l-2 border-slate-800 pl-8 ml-4 sm:ml-8 space-y-12">
+
+                    <!-- Role 1 -->
+                    <div class="relative timeline-item bg-slate-950 p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-xl glow-card">
+                        <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Digital Marketing Team Leader</h3>
+                                <p class="text-sky-400 font-medium">Pearl 27 &bull; United States (Remote)</p>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-sky-500/10 text-sky-400 border border-sky-500/20">
+                                Dec 2025 - Present
+                            </span>
+                        </div>
+                        <ul class="list-disc list-inside space-y-2 text-slate-300 text-sm leading-relaxed">
+                            <li>Lead and coordinate digital marketing activities, supervise team members, and delegate content projects.</li>
+                            <li>Create and manage multi-platform content across Reddit, Facebook, Instagram, X, and Quora while keeping brand standards high.</li>
+                            <li>Engage online communities, monitor conversion metrics, and mentor peer marketers to boost engagement.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Role 2 -->
+                    <div class="relative timeline-item bg-slate-950 p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-xl glow-card">
+                        <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Data Entry Specialist</h3>
+                                <p class="text-emerald-400 font-medium">Springboard / FamilySearch &bull; Remote</p>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-slate-800 text-slate-300">
+                                Jan 2026 - Apr 2026 & Nov 2024 - May 2025
+                            </span>
+                        </div>
+                        <ul class="list-disc list-inside space-y-2 text-slate-300 text-sm leading-relaxed">
+                            <li>Reviewed, indexed, and transcribed historical records for the "Yellow to Green" FamilySearch global archives.</li>
+                            <li>Maintained strict accuracy, confidential guidelines, and daily productivity targets to enhance global genealogical accessibility.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Role 3 -->
+                    <div class="relative timeline-item bg-slate-950 p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-xl glow-card">
+                        <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">English Teacher & Virtual Interpreter</h3>
+                                <p class="text-indigo-400 font-medium">Freelance &bull; Remote & Virtual</p>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                                Apr 2024 - Present
+                            </span>
+                        </div>
+                        <ul class="list-disc list-inside space-y-2 text-slate-300 text-sm leading-relaxed">
+                            <li>Deliver tailored English language lessons and professional interpretation for medical, childcare, and support clients.</li>
+                            <li>Bridge communication seamlessly between English and French / Lingala / Tshiluba speaking individuals with strict confidentiality.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Role 4 -->
+                    <div class="relative timeline-item bg-slate-950 p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-xl glow-card">
+                        <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Customer Service & Sales Representative</h3>
+                                <p class="text-amber-400 font-medium">Airtel Network DR Congo &bull; DR Congo</p>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-slate-800 text-slate-300">
+                                Jun 2024 - Jun 2025
+                            </span>
+                        </div>
+                        <ul class="list-disc list-inside space-y-2 text-slate-300 text-sm leading-relaxed">
+                            <li>Maintained computer networks and resolved customer tech issues proactively to improve overall service quality.</li>
+                            <li>Worked in client-facing sales, providing solution-oriented support to mobile network subscribers.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Role 5 -->
+                    <div class="relative timeline-item bg-slate-950 p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-xl glow-card">
+                        <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Bookkeeper Intern</h3>
+                                <p class="text-sky-400 font-medium">Mountain River Partners &bull; Remote / Internship</p>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-slate-800 text-slate-300">
+                                Jan 2026 - Mar 2026
+                            </span>
+                        </div>
+                        <ul class="list-disc list-inside space-y-2 text-slate-300 text-sm leading-relaxed">
+                            <li>Gained practical accounting experience in bank reconciliations, Microsoft Excel ledger management, and transaction recording.</li>
+                            <li>Assisted daily financial documentation with high precision and detail orientation.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Role 6 -->
+                    <div class="relative timeline-item bg-slate-950 p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-xl glow-card">
+                        <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Full-time Volunteer Missionary</h3>
+                                <p class="text-purple-400 font-medium">The Church of Jesus Christ of Latter-day Saints</p>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-slate-800 text-slate-300">
+                                Apr 2022 - Mar 2024
+                            </span>
+                        </div>
+                        <ul class="list-disc list-inside space-y-2 text-slate-300 text-sm leading-relaxed">
+                            <li>Completed 24 months of full-time community service, mentoring, conflict resolution, and public speaking across diverse cultures.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Role 7 -->
+                    <div class="relative timeline-item bg-slate-950 p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-xl glow-card">
+                        <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Administrative Assistant</h3>
+                                <p class="text-slate-400 font-medium">TSHELAKAMBA Foundation ONG &bull; Kananga, DR Congo</p>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-slate-800 text-slate-300">
+                                2019 - 2020
+                            </span>
+                        </div>
+                        <ul class="list-disc list-inside space-y-2 text-slate-300 text-sm leading-relaxed">
+                            <li>Prepared official correspondence, monitored live news updates, and performed background data checks for internal audits.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- INTERACTIVE PROJECTS SHOWCASE SECTION -->
+        <section id="projects" class="py-20 bg-slate-950 border-t border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+                    <span class="text-xs font-bold uppercase tracking-widest text-sky-400">Featured Work</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Interactive Highlight Projects</h2>
+                    <p class="text-slate-400">Explore key implementations combining marketing campaign strategy, data indexing systems, and multilingual learning tools.</p>
+                </div>
+
+                <!-- Interactive Project Category Filters -->
+                <div class="flex flex-wrap justify-center gap-3 mb-10">
+                    <button onclick="filterProjects('all')" class="project-filter-btn active px-5 py-2 rounded-xl text-sm font-semibold bg-sky-600 text-white transition-all shadow-md">
+                        All Projects
+                    </button>
+                    <button onclick="filterProjects('marketing')" class="project-filter-btn px-5 py-2 rounded-xl text-sm font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all">
+                        Marketing & Brand
+                    </button>
+                    <button onclick="filterProjects('data')" class="project-filter-btn px-5 py-2 rounded-xl text-sm font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all">
+                        Data & Indexing
+                    </button>
+                    <button onclick="filterProjects('language')" class="project-filter-btn px-5 py-2 rounded-xl text-sm font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all">
+                        Multilingual Hub
+                    </button>
+                </div>
+
+                <!-- Projects Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Project 1 -->
+                    <div class="project-card marketing bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden glow-card flex flex-col">
+                        <div class="p-6 bg-gradient-to-r from-sky-900/40 to-slate-900 border-b border-slate-800 flex justify-between items-center">
+                            <span class="text-xs font-bold text-sky-400 uppercase tracking-wide">Social & Brand Leadership</span>
+                            <i class="fas fa-chart-line text-sky-400"></i>
+                        </div>
+                        <div class="p-6 flex-grow space-y-4">
+                            <h3 class="text-xl font-bold text-white">Pearl 27 Multi-Channel Campaign</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Strategy dashboard managing multi-channel promotional outreach across Reddit, Facebook, Instagram, and Quora with structured KPI tracking.
+                            </p>
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="px-2.5 py-1 rounded-md text-xs bg-slate-800 text-slate-300">Social Strategy</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs bg-slate-800 text-slate-300">Mentorship</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs bg-slate-800 text-slate-300">Analytics</span>
+                            </div>
+                        </div>
+                        <div class="p-6 bg-slate-900/50 border-t border-slate-800/80">
+                            <button onclick="openModal('pearl')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-sky-600 text-white font-semibold text-sm transition-colors flex items-center justify-center space-x-2">
+                                <span>Explore Campaign Overview</span>
+                                <i class="fas fa-arrow-right text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card data bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden glow-card flex flex-col">
+                        <div class="p-6 bg-gradient-to-r from-emerald-900/40 to-slate-900 border-b border-slate-800 flex justify-between items-center">
+                            <span class="text-xs font-bold text-emerald-400 uppercase tracking-wide">Genealogy & Accuracy</span>
+                            <i class="fas fa-database text-emerald-400"></i>
+                        </div>
+                        <div class="p-6 flex-grow space-y-4">
+                            <h3 class="text-xl font-bold text-white">FamilySearch Records System</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Structured indexing pipeline managing historical document verification and database entry for FamilySearch archives.
+                            </p>
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="px-2.5 py-1 rounded-md text-xs bg-slate-800 text-slate-300">Record Indexing</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs bg-slate-800 text-slate-300">Verification</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs bg-slate-800 text-slate-300">Quality Control</span>
+                            </div>
+                        </div>
+                        <div class="p-6 bg-slate-900/50 border-t border-slate-800/80">
+                            <button onclick="openModal('familysearch')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-emerald-600 text-white font-semibold text-sm transition-colors flex items-center justify-center space-x-2">
+                                <span>Explore Data Workflow</span>
+                                <i class="fas fa-arrow-right text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-card language bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden glow-card flex flex-col">
+                        <div class="p-6 bg-gradient-to-r from-indigo-900/40 to-slate-900 border-b border-slate-800 flex justify-between items-center">
+                            <span class="text-xs font-bold text-indigo-400 uppercase tracking-wide">Virtual Classroom & Interpretation</span>
+                            <i class="fas fa-chalkboard-teacher text-indigo-400"></i>
+                        </div>
+                        <div class="p-6 flex-grow space-y-4">
+                            <h3 class="text-xl font-bold text-white">Multilingual Teaching & Bridge Hub</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Real-time language translation & teaching framework covering English, French, Lingala, and Tshiluba for healthcare and corporate settings.
+                            </p>
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="px-2.5 py-1 rounded-md text-xs bg-slate-800 text-slate-300">English Instruction</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs bg-slate-800 text-slate-300">Interpretation</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs bg-slate-800 text-slate-300">Cultural Care</span>
+                            </div>
+                        </div>
+                        <div class="p-6 bg-slate-900/50 border-t border-slate-800/80">
+                            <button onclick="openModal('language')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-indigo-600 text-white font-semibold text-sm transition-colors flex items-center justify-center space-x-2">
+                                <span>Explore Language Framework</span>
+                                <i class="fas fa-arrow-right text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION & CERTIFICATIONS SECTION -->
+        <section id="education" class="py-20 bg-slate-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <span class="text-xs font-bold uppercase tracking-widest text-sky-400">Academic Foundation</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Education & Certifications</h2>
+                    <p class="text-slate-400">Degree pathways, certificate programs, and technical education credentials.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- BYU Idaho Block -->
+                    <div class="bg-slate-950 p-8 rounded-2xl border border-slate-800 shadow-xl space-y-6 glow-card">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-14 h-14 rounded-2xl bg-sky-500/10 text-sky-400 flex items-center justify-center text-2xl font-bold">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Brigham Young University - Idaho</h3>
+                                <p class="text-sky-400 font-medium text-sm">Applied Business Management Degree (Ongoing)</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 pt-2">
+                            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 flex justify-between items-center">
+                                <div>
+                                    <h4 class="font-bold text-white">Business & Leadership Skills Certificate</h4>
+                                    <p class="text-xs text-slate-400">BYU-Idaho Pathway Program</p>
+                                </div>
+                                <span class="px-3 py-1 rounded-lg text-xs font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">GPA: 2.7</span>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 flex justify-between items-center">
+                                <div>
+                                    <h4 class="font-bold text-white">Administrative Assistant Certificate</h4>
+                                    <p class="text-xs text-slate-400">BYU-Idaho Pathway Program</p>
+                                </div>
+                                <span class="px-3 py-1 rounded-lg text-xs font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">GPA: 2.8</span>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 flex justify-between items-center">
+                                <div>
+                                    <h4 class="font-bold text-white">PathwayConnect Certificate</h4>
+                                    <p class="text-xs text-slate-400">BYU-Pathway Worldwide</p>
+                                </div>
+                                <span class="px-3 py-1 rounded-lg text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">GPA: 3.1</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Technical High School Block -->
+                    <div class="bg-slate-950 p-8 rounded-2xl border border-slate-800 shadow-xl space-y-6 glow-card flex flex-col justify-between">
+                        <div class="space-y-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-14 h-14 rounded-2xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-2xl font-bold">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white">Institute Kananga 1</h3>
+                                    <p class="text-indigo-400 font-medium text-sm">Industrial Electricity Diploma</p>
+                                </div>
+                            </div>
+
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Completed high school diploma focusing on industrial electrical principles, network circuitry basics, technical troubleshooting, and structured maintenance.
+                            </p>
+
+                            <div class="p-5 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
+                                <h4 class="font-bold text-white flex items-center space-x-2">
+                                    <i class="fas fa-check-circle text-emerald-400"></i>
+                                    <span>Core Competencies Developed</span>
+                                </h4>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    Troubleshooting technical systems, foundational network logic, analytical problem solving, precision safety protocols, and structured documentation.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="pt-6 border-t border-slate-800 text-xs text-slate-400 flex justify-between items-center">
+                            <span>Graduated: 2017 - 2021</span>
+                            <span class="text-sky-400 font-semibold">Kananga, DR Congo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS & EXPERTISE SECTION -->
+        <section id="skills" class="py-20 bg-slate-950 border-t border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <span class="text-xs font-bold uppercase tracking-widest text-sky-400">Capabilities</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Skills & Multilingual Proficiency</h2>
+                    <p class="text-slate-400">Comprehensive view of communication, technical, and operational strengths.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    
+                    <!-- Languages Section -->
+                    <div class="bg-slate-900 p-8 rounded-2xl border border-slate-800 space-y-6">
+                        <h3 class="text-2xl font-bold text-white flex items-center space-x-3">
+                            <i class="fas fa-globe text-sky-400"></i>
+                            <span>Language Mastery</span>
+                        </h3>
+
+                        <div class="space-y-4">
+                            <!-- English -->
+                            <div>
+                                <div class="flex justify-between text-sm font-semibold mb-1">
+                                    <span class="text-white">English</span>
+                                    <span class="text-sky-400">Fluent</span>
+                                </div>
+                                <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-sky-500 h-full rounded-full" style="width: 95%;"></div>
+                                </div>
+                            </div>
+
+                            <!-- French -->
+                            <div>
+                                <div class="flex justify-between text-sm font-semibold mb-1">
+                                    <span class="text-white">French</span>
+                                    <span class="text-emerald-400">Native</span>
+                                </div>
+                                <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-emerald-500 h-full rounded-full" style="width: 100%;"></div>
+                                </div>
+                            </div>
+
+                            <!-- Lingala -->
+                            <div>
+                                <div class="flex justify-between text-sm font-semibold mb-1">
+                                    <span class="text-white">Lingala</span>
+                                    <span class="text-emerald-400">Native</span>
+                                </div>
+                                <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-emerald-500 h-full rounded-full" style="width: 100%;"></div>
+                                </div>
+                            </div>
+
+                            <!-- Tshiluba -->
+                            <div>
+                                <div class="flex justify-between text-sm font-semibold mb-1">
+                                    <span class="text-white">Tshiluba</span>
+                                    <span class="text-emerald-400">Native</span>
+                                </div>
+                                <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-emerald-500 h-full rounded-full" style="width: 100%;"></div>
+                                </div>
+                            </div>
+
+                            <!-- Swahili -->
+                            <div>
+                                <div class="flex justify-between text-sm font-semibold mb-1">
+                                    <span class="text-white">Swahili</span>
+                                    <span class="text-indigo-400">Intermediate</span>
+                                </div>
+                                <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-indigo-500 h-full rounded-full" style="width: 65%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Professional Skills Badges Grid -->
+                    <div class="bg-slate-900 p-8 rounded-2xl border border-slate-800 space-y-6">
+                        <h3 class="text-2xl font-bold text-white flex items-center space-x-3">
+                            <i class="fas fa-cogs text-indigo-400"></i>
+                            <span>Professional Core Skills</span>
+                        </h3>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 text-sm font-medium text-slate-200 flex items-center space-x-2">
+                                <i class="fas fa-bullhorn text-sky-400"></i>
+                                <span>Digital Marketing</span>
+                            </div>
+                            <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 text-sm font-medium text-slate-200 flex items-center space-x-2">
+                                <i class="fas fa-users text-indigo-400"></i>
+                                <span>Team Leadership</span>
+                            </div>
+                            <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 text-sm font-medium text-slate-200 flex items-center space-x-2">
+                                <i class="fas fa-keyboard text-emerald-400"></i>
+                                <span>Data Entry & Indexing</span>
+                            </div>
+                            <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 text-sm font-medium text-slate-200 flex items-center space-x-2">
+                                <i class="fas fa-file-excel text-green-500"></i>
+                                <span>Bookkeeping & Excel</span>
+                            </div>
+                            <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 text-sm font-medium text-slate-200 flex items-center space-x-2">
+                                <i class="fas fa-headset text-amber-400"></i>
+                                <span>Customer Support</span>
+                            </div>
+                            <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 text-sm font-medium text-slate-200 flex items-center space-x-2">
+                                <i class="fas fa-comments text-purple-400"></i>
+                                <span>Public Speaking</span>
+                            </div>
+                            <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 text-sm font-medium text-slate-200 flex items-center space-x-2">
+                                <i class="fas fa-clock text-rose-400"></i>
+                                <span>Time Management</span>
+                            </div>
+                            <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 text-sm font-medium text-slate-200 flex items-center space-x-2">
+                                <i class="fas fa-lightbulb text-yellow-400"></i>
+                                <span>Problem Solving</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="py-20 bg-slate-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <span class="text-xs font-bold uppercase tracking-widest text-sky-400">Get In Touch</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Let's Collaborate</h2>
+                    <p class="text-slate-400">Have a project, teaching requirement, data task, or interpretation request? Send a message below.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    <!-- Contact Details Column -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center text-xl font-bold shrink-0">
+                                <i class="fas fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Location</h4>
+                                <p class="text-sm text-slate-400">Nairobi, Kenya</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl font-bold shrink-0">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Email Address</h4>
+                                <a href="mailto:longosamy12@gmail.com" class="text-sm text-sky-400 hover:underline">longosamy12@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl font-bold shrink-0">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Phone / WhatsApp</h4>
+                                <a href="tel:+254727302728" class="text-sm text-sky-400 hover:underline">+254 727 302 728</a>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-xl font-bold shrink-0">
+                                <i class="fab fa-linkedin-in"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">LinkedIn Profile</h4>
+                                <a href="https://www.linkedin.com/in/samy-longo-920409300/" target="_blank" class="text-sm text-sky-400 hover:underline">linkedin.com/in/samy-longo-920409300</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Contact Form -->
+                    <div class="lg:col-span-7 bg-slate-950 p-8 rounded-2xl border border-slate-800 shadow-2xl">
+                        <!-- Message status box -->
+                        <div id="formAlert" class="hidden mb-6 p-4 rounded-xl text-sm font-semibold"></div>
+
+                        <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wide mb-2">Your Name</label>
+                                    <input type="text" id="senderName" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 transition-colors">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wide mb-2">Your Email</label>
+                                    <input type="email" id="senderEmail" required placeholder="john@example.com" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 transition-colors">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wide mb-2">Subject</label>
+                                <input type="text" id="senderSubject" required placeholder="Project Collaboration / Inquiries" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 transition-colors">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wide mb-2">Message</label>
+                                <textarea id="senderMessage" rows="5" required placeholder="Write your message here..." class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 transition-colors resize-none"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-3.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold transition-colors shadow-lg shadow-sky-600/30 flex items-center justify-center space-x-2">
+                                <i class="fas fa-paper-plane text-sm"></i>
+                                <span>Send Message</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 border-t border-slate-900 py-8 text-center text-slate-500 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-2">
+            <p>&copy; 2026 Longo Kankonde Samy. All rights reserved.</p>
+            <p>Designed with HTML, CSS, and JavaScript &bull; Nairobi, Kenya</p>
+        </div>
+    </footer>
+
+    <!-- PROJECT DETAILS MODAL -->
+    <div id="projectModal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 w-full max-w-2xl rounded-2xl overflow-hidden shadow-2xl">
+            <div class="p-6 border-b border-slate-800 flex justify-between items-center">
+                <h3 id="modalTitle" class="text-xl font-bold text-white">Project Details</h3>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-white text-xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="modalBody" class="p-6 text-slate-300 text-sm space-y-4">
+                <!-- Modal content injected dynamically via JavaScript -->
+            </div>
+            <div class="p-4 bg-slate-950 border-t border-slate-800 flex justify-end">
+                <button onclick="closeModal()" class="px-5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT CONTROLLERS -->
+    <script>
+        // Toggle Dark/Light Theme
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('themeIcon');
+            const themeIconMobile = document.getElementById('themeIconMobile');
+
+            if (body.classList.contains('light')) {
+                body.classList.remove('light');
+                body.classList.add('bg-slate-900', 'text-slate-100');
+                if (themeIcon) themeIcon.className = 'fas fa-sun text-amber-400';
+                if (themeIconMobile) themeIconMobile.className = 'fas fa-sun text-amber-400';
+            } else {
+                body.classList.add('light');
+                body.classList.remove('bg-slate-900', 'text-slate-100');
+                if (themeIcon) themeIcon.className = 'fas fa-moon text-indigo-400';
+                if (themeIconMobile) themeIconMobile.className = 'fas fa-moon text-indigo-400';
+            }
+        }
+
+        // Toggle Mobile Menu Drawer
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            menu.classList.toggle('hidden');
+
+            if (menu.classList.contains('hidden')) {
+                icon.className = 'fas fa-bars text-2xl';
+            } else {
+                icon.className = 'fas fa-xmark text-2xl';
+            }
+        }
+
+        // Project Filters Logic
+        function filterProjects(category) {
+            const cards = document.querySelectorAll('.project-card');
+            const buttons = document.querySelectorAll('.project-filter-btn');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-sky-600', 'text-white');
+                btn.classList.add('bg-slate-800', 'text-slate-300');
+            });
+
+            event.target.classList.remove('bg-slate-800', 'text-slate-300');
+            event.target.classList.add('bg-sky-600', 'text-white');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Modal Content Data
+        const projectModalData = {
+            pearl: {
+                title: "Pearl 27 Digital Marketing Strategy",
+                content: `
+                    <p><strong>Role:</strong> Digital Marketing Team Leader (Remote - USA)</p>
+                    <p><strong>Execution Details:</strong> Led multi-platform marketing strategy across Reddit, Facebook, Instagram, X, and Quora.</p>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Supervised team tasks and deadlines to ensure steady campaign workflow.</li>
+                        <li>Monitored conversions and audience metrics to refine brand voice.</li>
+                        <li>Mentored peer team members in copywriting and social engagement strategies.</li>
+                    </ul>
+                `
+            },
+            familysearch: {
+                title: "FamilySearch Historical Record Indexing",
+                content: `
+                    <p><strong>Role:</strong> Data Entry Specialist at Springboard</p>
+                    <p><strong>Execution Details:</strong> Indexed genealogical archives as part of the "Yellow to Green" project.</p>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Transcribed historical handwritten records with strict error verification.</li>
+                        <li>Maintained daily productivity targets while observing strict confidentiality.</li>
+                        <li>Enhanced global accessibility for family researchers worldwide.</li>
+                    </ul>
+                `
+            },
+            language: {
+                title: "Multilingual Instruction & Virtual Interpretation",
+                content: `
+                    <p><strong>Role:</strong> Freelance Educator & Interpreter</p>
+                    <p><strong>Execution Details:</strong> Virtual bridge for English, French, Lingala, Tshiluba, and Swahili speakers.</p>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Conducted customized English lessons for international learners.</li>
+                        <li>Provided real-time virtual interpretation in healthcare and customer support contexts.</li>
+                        <li>Maintained cultural sensitivity and exact terminology alignment.</li>
+                    </ul>
+                `
+            }
+        };
+
+        function openModal(key) {
+            const data = projectModalData[key];
+            if (data) {
+                document.getElementById('modalTitle').innerText = data.title;
+                document.getElementById('modalBody').innerHTML = data.content;
+                document.getElementById('projectModal').classList.remove('hidden');
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').classList.add('hidden');
+        }
+
+        // Contact Form Interactive Submission Simulation
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const alertBox = document.getElementById('formAlert');
+            const name = document.getElementById('senderName').value;
+
+            alertBox.className = "mb-6 p-4 rounded-xl text-sm font-semibold bg-emerald-500/10 border border-emerald-500/20 text-emerald-400";
+            alertBox.innerHTML = `<i class="fas fa-check-circle mr-2"></i> Thank you, ${name}! Your message has been sent successfully. Samy will get back to you shortly.`;
+            alertBox.classList.remove('hidden');
+
+            document.getElementById('contactForm').reset();
+
+            setTimeout(() => {
+                alertBox.classList.add('hidden');
+            }, 6000);
+        }
+
+        // Resume Download Alert Helper
+        function downloadResumeAlert() {
+            const alertBox = document.getElementById('formAlert');
+            alertBox.className = "mb-6 p-4 rounded-xl text-sm font-semibold bg-sky-500/10 border border-sky-500/20 text-sky-400";
+            alertBox.innerHTML = `<i class="fas fa-file-pdf mr-2"></i> Downloading Longo Kankonde Samy's CV resume document...`;
+            alertBox.classList.remove('hidden');
+
+            setTimeout(() => {
+                alertBox.classList.add('hidden');
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
